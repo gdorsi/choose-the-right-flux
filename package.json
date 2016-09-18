@@ -1,0 +1,28 @@
+{
+  "name": "create-your-own-flux",
+  "version": "0.1.0",
+  "description": "A story about app state managment",
+  "scripts": {
+    "start": "node_modules/.bin/gulp"
+  },
+  "author": {
+    "name": "Guido D'Orsi",
+    "email": "gu.dorsi@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gdorsi/create-your-own-flux.git"
+  },
+  "engines": {
+    "node": "~6.0.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-rollup": "^2.4.0",
+    "gulp-sass": "^2.3.2",
+    "rollup": "^0.35.11"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}

@@ -1,0 +1,94 @@
+/* 1Colors
+   ========================================================================== */
+/* Global
+   ========================================================================== */
+/* Typography
+   ========================================================================== */
+section {
+  transition: opacity, transform;
+  transform: translate3d(-100vw, 0, 0);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 2s; }
+  section.active {
+    transform: translate3d(0, 0, 0);
+    transition-duration: .4s;
+    z-index: 1; }
+  section.active ~ section {
+    transform: translate3d(100vw, 0, 0); }
+
+body {
+  overflow-x: hidden; }
+
+section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  background: #FFC107; }
+
+a {
+  text-decoration: none; }
+
+html {
+  line-height: 1.5;
+  font-size: calc(1vw + 1vh);
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.1; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit; }
+
+h1 {
+  font-size: 4.2rem;
+  line-height: 110%;
+  margin: 2.1rem 0 1.68rem 0; }
+
+h2 {
+  font-size: 3.56rem;
+  line-height: 110%;
+  margin: 1.78rem 0 1.424rem 0; }
+
+h3 {
+  font-size: 2.92rem;
+  line-height: 110%;
+  margin: 1.46rem 0 1.168rem 0; }
+
+h4 {
+  font-size: 2.28rem;
+  line-height: 110%;
+  margin: 1.14rem 0 0.912rem 0; }
+
+h5 {
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 0.82rem 0 0.656rem 0; }
+
+h6 {
+  font-size: 1rem;
+  line-height: 110%;
+  margin: 0.5rem 0 0.4rem 0; }
+
+em {
+  font-style: italic; }
+
+strong {
+  font-weight: 500; }
+
+small {
+  font-size: 75%; }
+
+.light {
+  font-weight: 300; }
+
+.thin {
+  font-weight: 200; }
