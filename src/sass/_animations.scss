@@ -2,7 +2,6 @@ section {
   transition: opacity .2s, transform .4s;
   transform: translate3d(-10vw, 0, 0);
   transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
-  transition-duration: .4s;
 
   &.active {
     transform: translate3d(0, 0, 0);
@@ -18,3 +17,14 @@ section {
   }
 }
 
+.fragment {
+  transition: opacity .2s;
+  transform: translate3d(-10vw, 0, 0);
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+  opacity: 0;
+
+  &.visible {
+    opacity: 1;
+  }
+}
