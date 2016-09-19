@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 var rollup = require('gulp-rollup');
+var babel = require('rollup-plugin-babel');
 
 gulp.task('connect', () => {
     connect.server({
@@ -17,7 +18,12 @@ gulp.task('html', () => {
 gulp.task('js', () => {
     gulp.src('./src/js/**/*.js')
         .pipe(rollup({
-            entry: './src/js/index.js'
+            entry: './src/js/index.js',
+            plugins: [
+                babel({
+                    exclude: 'node_modules/**'
+                })
+            ]
         }))
         .pipe(gulp.dest('./dist'))
         .pipe(connect.reload());
