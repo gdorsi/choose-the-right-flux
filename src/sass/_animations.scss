@@ -12,5 +12,9 @@ section {
   &.active + section {
     transform: translate3d(10vw, 0, 0);
   }
+
+  &.active ~ section {
+    opacity: 0;
+  }
 }
 
