@@ -1,11 +1,11 @@
 import getSlidesDepthList from '../lib/getSlidesDepthList';
 import {initialize} from '../actions';
-import forEach from 'lodash/fp/forEach';
+import {slide, fragment} from '../selectors';
 
 function reduceState(state) {
     return {
-        fragment: state.fragment,
-        slide: state.slide
+        fragment: fragment(state),
+        slide: slide(state)
     };
 }
 

@@ -16,3 +16,35 @@ section {
   background: $primary-color;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
+
+.progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  border-bottom: 3px $secondary-color solid;
+  border-right: 3px $primary-color solid;
+}
+
+.controls {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 1;
+
+  .prev, .next {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+
+    polygon {
+      fill: $secondary-color;
+    }
+
+    &.disabled {
+      opacity: .3;
+    }
+  }
+}

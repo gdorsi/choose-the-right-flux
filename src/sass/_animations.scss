@@ -28,3 +28,8 @@ section {
     opacity: 1;
   }
 }
+
+.progress {
+  transition: width .2s;
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
