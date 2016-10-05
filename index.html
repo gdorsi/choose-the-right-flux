@@ -21,48 +21,50 @@
 			</div>
 		</section>
 		<section>
-			Tanto tempo fa, in una piccola interfaccia, regnava la pace e la serenità.
-			Non c'era una vera e propria organizzazione, ma i componenti erano pochi e gestirli era abbastanza facile.
+			<p>
+				Tanto tempo fa, in una piccola interfaccia, regnava la pace e la serenità.
+				Non c'era una vera e propria organizzazione, ma i componenti erano pochi e gestirli era abbastanza facile.
+			</p>
 		</section>
 		<section>
-			Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
-			Iniziarono ad uscire fuori i primi bug, ma correggerli non faceva altro che aumentare la complessità del sistema.
+			<p>Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
+				Iniziarono ad uscire fuori i primi bug, ma correggerli non faceva altro che aumentare la complessità del sistema.</p>
 		</section>
 		<section>
-			Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
-			Venne utilizzato il pattern MVC
+			<p>Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
+				Venne utilizzato il pattern MVC</p>
 		</section>
 		<section>
-			Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View
+			<p>Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View</p>
 		</section>
 		<section>
-			Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
-			e quando una View tentava di parlare con un Model succedeva il finimondo.
+			<p>Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
+				e quando una View tentava di parlare con un Model succedeva il finimondo.</p>
 		</section>
 		<section>
-			Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux
+			<p>Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux</p>
 		</section>
 		<section>
-			Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.
+			<p>Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.</p>
 		</section>
 		<section>
-			La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
-			Gli Store prendono le action e aggiornano lo stato dell'applicazione.
-			Dopo che hanno fatto tutto raccontano le modifiche alla View che fermano il giro e mostrano il nuovo stato al'utente.
+			<p>La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
+				Gli Store prendono le action e aggiornano lo stato dell'applicazione.
+				Dopo che hanno fatto tutto raccontano le modifiche alla View che fermano il giro e mostrano il nuovo stato al'utente.</p>
 			<img class="responsive" src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png">
 		</section>
 		<section>
-			Però poi ci si rese conto che quello di Facebook non era l'unico modo di implementare il pattern Flux.
-			Perchè gli store dovevano essere tanti?
-			Non può essere solo uno?
-			Come devono memorizzare lo stato?
-			Come devono raccontare le modifiche alla View?
-			E le actions che struttura devono avere?
+			<p>Però poi ci si rese conto che quello di Facebook non era l'unico modo di implementare il pattern Flux.
+				Perchè gli store dovevano essere tanti?
+				Non può essere solo uno?
+				Come devono memorizzare lo stato?
+				Come devono raccontare le modifiche alla View?
+				E le actions che struttura devono avere?</p>
 		</section>
 		<section>
-			Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
-			Ognuna buona sotto certi aspetti, ognuna brillante.
-			Ma come scegliere quella giusta?
+			<p>Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
+				Ognuna buona sotto certi aspetti, ognuna brillante.
+				Ma come scegliere quella giusta per la nostra applicazione?</p>
 		</section>
 		<section>
 			Flux libraries
