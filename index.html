@@ -6,30 +6,69 @@
 
 		<title>Create your own flux</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-        <link rel="stylesheet" href="/dist/index.css">
+        <link rel="stylesheet" href="dist/index.css">
 	</head>
 	<body>
 		<section class="active">
 			<h1>Choose the right Flux!</h1>
 			<p>
-				A way to choose the right Flux library and rule over your application's state
+				In an interface rich of async calls and complexity
+				only the right hero can bring peace and scalability.
+				He is the chosen implementation of the Flux pattern.
 			</p>
 			<div class="bottom-left">
 				Guido D'Orsi @ RomaJS
 			</div>
 		</section>
 		<section>
-			Every moment can be described with a state
+			Tanto tempo fa, in una piccola interfaccia, regnava la pace e la serenità.
+			Non c'era una vera e propria organizzazione, ma i componenti erano pochi e gestirli era abbastanza facile.
 		</section>
-		<section style="background: #4F4E50">
+		<section>
+			Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
+			Iniziarono ad uscire fuori i primi bug, ma correggerli non faceva altro che aumentare la complessità del sistema.
+		</section>
+		<section>
+			Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
+			Venne utilizzato il pattern MVC
+		</section>
+		<section>
+			Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View
+		</section>
+		<section>
+			Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
+			e quando una View tentava di parlare con un Model succedeva il finimondo.
+		</section>
+		<section>
+			Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux
+		</section>
+		<section>
+			Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.
+		</section>
+		<section>
+			La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
+			Gli Store prendono le action e aggiornano lo stato dell'applicazione.
+			Dopo che hanno fatto tutto raccontano le modifiche alla View che fermano il giro e mostrano il nuovo stato al'utente.
 			<img class="responsive" src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png">
+		</section>
+		<section>
+			Però poi ci si rese conto che quello di Facebook non era l'unico modo di implementare il pattern Flux.
+			Perchè gli store dovevano essere tanti?
+			Non può essere solo uno?
+			Come devono memorizzare lo stato?
+			Come devono raccontare le modifiche alla View?
+			E le actions che struttura devono avere?
+		</section>
+		<section>
+			Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
+			Ognuna buona sotto certi aspetti, ognuna brillante.
+			Ma come scegliere quella giusta?
 		</section>
 		<section>
 			Flux libraries
 		</section>
 		<section>
-			How to choose a Flux library --> Create your own!
-			(Too many choices)
+			How to choose a Flux library or Create your own
 		</section>
 		<section>
 			Flux variants
@@ -46,6 +85,6 @@
 				<polygon points="0,0 0,20 20,10"/>
 			</svg>
 		</div>
-		<script src="/dist/index.js"></script>
+		<script src="dist/index.js"></script>
 	</body>
 </html>
