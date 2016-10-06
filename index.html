@@ -14,7 +14,8 @@
 			<p>
 				In an interface rich of async calls and complexity
 				only the right hero can bring peace and scalability.
-				He is the chosen implementation of the Flux pattern.
+				Flux, a pattern from Facebook, can be the right choice,
+				but there are hundreads implementations and we must choose the right one.
 			</p>
 			<div class="bottom-left">
 				Guido D'Orsi @ RomaJS
@@ -54,7 +55,7 @@
 			<img class="responsive" src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png">
 		</section>
 		<section>
-			<p>Però poi ci si rese conto che quello di Facebook non era l'unico modo di implementare il pattern Flux.
+			<p>Però poi ci si rese conto che c'erano un sacco di modi per implementare Flux.
 				Perchè gli store dovevano essere tanti?
 				Non può essere solo uno?
 				Come devono memorizzare lo stato?
@@ -62,12 +63,57 @@
 				E le actions che struttura devono avere?</p>
 		</section>
 		<section>
-			<p>Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
+			<p>
+				Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
 				Ognuna buona sotto certi aspetti, ognuna brillante.
-				Ma come scegliere quella giusta per la nostra applicazione?</p>
+				Ma come scegliere quella giusta per la nostra applicazione?
+			</p>
 		</section>
 		<section>
-			Flux libraries
+			<p>
+				Per capire meglio le motivazioni di alcune scelte si decise di sperimentare.
+				Creando una nuova implementazione di Flux, la nostra, cucita addosso la nostra interfaccia
+			</p>
+		</section>
+		<section>
+			<p>
+				Iniziamo col rispondere alla domanda che cos'è un action?
+				Abbiamo capito che è il messaggio che viene creato su richesta delle View e spedito a tutti gli store,
+				ma come sono fatte?
+			</p>
+		</section>
+		<section>
+			<p class="code">
+				{
+					type: 'MY_TYPE',
+					data: actionData
+				}
+			</p>
+			<p>
+				Un'action è solitamente un oggetto plain, ma si ha totale libertà su come definirla.
+				L'unica cosa comune a tutte le implementazioni Flux è l'attributo type, valorizzato con una stringa in snake upper case
+			</p>
+		</section>
+		<section>
+			<p class="code">
+				{
+					type: 'MY_TYPE',
+					payload: actionData,
+					meta: actionMeta
+				},
+				{
+					type: 'MY_TYPE',
+					payload: Error,
+					error: true
+				}
+			</p>
+			<p>
+				A qualcuno però questa troppa libertà non piaceva, così si è inventato un pattern nel pattern, le FSA.
+				Definire un pattern per le action ha dato vita a un ecosistema di funzioni helper utili.
+			</p>
+		</section>
+		<section>
+
 		</section>
 		<section>
 			How to choose a Flux library or Create your own
