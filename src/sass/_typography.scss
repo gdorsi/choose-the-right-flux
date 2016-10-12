@@ -81,3 +81,15 @@ small {
 .code {
   white-space: pre;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.hidden-note {
+  display: none;
+}
+
+.show-notes .hidden-note {
+  display: block;
+}

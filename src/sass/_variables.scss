@@ -2,7 +2,8 @@
 /* 1Colors
    ========================================================================== */
 
-$primary-color: #FFC107 !default;
+//$primary-color: #FFC107 !default;
+$primary-color: #dddddd !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 

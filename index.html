@@ -23,61 +23,55 @@
 			</div>
 		</section>
 		<section>
-			<p>
+			<p class="hidden-note">
 				Tanto tempo fa, in una piccola interfaccia, regnava la pace e la serenità.
 				Non c'era una vera e propria organizzazione, ma i componenti erano pochi e gestirli era abbastanza facile.
 			</p>
+			<p class="text-center">
+				<img src="basic-interface.svg" style="width: 50vw; height: 50vh;">
+			</p>
 		</section>
 		<section>
-			<p>Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
+			<p class="hidden-note">Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
 				Iniziarono ad uscire fuori i primi bug, ma correggerli non faceva altro che aumentare la complessità del sistema.</p>
+			<p class="text-center">
+				<img src="medium-interface.svg" style="width: 50vw; height: 50vh;">
+			</p>
 		</section>
 		<section>
-			<p>Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
+			<p class="hidden-note">Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
 				Venne utilizzato il pattern MVC</p>
 		</section>
 		<section>
-			<p>Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View</p>
+			<p class="hidden-note">Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View</p>
 		</section>
 		<section>
-			<p>Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
+			<p class="hidden-note">Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
 				e quando una View tentava di parlare con un Model succedeva il finimondo.</p>
 		</section>
 		<section>
-			<p>Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux</p>
+			<p class="hidden-note">Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux</p>
 		</section>
 		<section>
-			<p>Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.</p>
+			<p class="hidden-note">Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.</p>
 		</section>
 		<section>
-			<p>La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
+			<p class="hidden-note">La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
 				Gli Store prendono le action e aggiornano lo stato dell'applicazione.
 				Dopo che hanno fatto tutto raccontano le modifiche alla View che fermano il giro e mostrano il nuovo stato al'utente.</p>
 			<img class="responsive" src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png">
 		</section>
 		<section>
-			<p>Però poi ci si rese conto che c'erano un sacco di modi per implementare Flux.
-				Perchè gli store dovevano essere tanti?
-				Non può essere solo uno?
-				Come devono memorizzare lo stato?
-				Come devono raccontare le modifiche alla View?
-				E le actions che struttura devono avere?</p>
-		</section>
-		<section>
-			<p>
-				Fu così che le librerie su Flux iniziarono a fiorire, milioni e milioni di implementazioni.
-				Ognuna buona sotto certi aspetti, ognuna brillante.
-				Ma come scegliere quella giusta per la nostra applicazione?
+			<p class="hidden-note">
+				Come implementare Flux?
+				Ci scegliamo una libreria o ci facciamo una cosa nostra?
+				Io penso che l'unico modo per utilizzare una tecnologia è conoscerla bene,
+				per questo oggi voglio provare ad analizzare quelle che possono essere le scelte principali
+				che vanno effettuate quando si sceglie di utilizzare Flux.
 			</p>
 		</section>
 		<section>
-			<p>
-				Per capire meglio le motivazioni di alcune scelte si decise di sperimentare.
-				Creando una nuova implementazione di Flux, la nostra, cucita addosso la nostra interfaccia
-			</p>
-		</section>
-		<section>
-			<p>
+			<p class="hidden-note">
 				Iniziamo col rispondere alla domanda che cos'è un action?
 				Abbiamo capito che è il messaggio che viene creato su richesta delle View e spedito a tutti gli store,
 				ma come sono fatte?
@@ -85,39 +79,116 @@
 		</section>
 		<section>
 			<p class="code">
-				{
-					type: 'MY_TYPE',
-					data: actionData
-				}
+{
+	type: 'ADD_TODO',
+	data: actionData
+}
 			</p>
-			<p>
+			<p class="hidden-note">
 				Un'action è solitamente un oggetto plain, ma si ha totale libertà su come definirla.
 				L'unica cosa comune a tutte le implementazioni Flux è l'attributo type, valorizzato con una stringa in snake upper case
 			</p>
 		</section>
 		<section>
 			<p class="code">
-				{
-					type: 'MY_TYPE',
-					payload: actionData,
-					meta: actionMeta
-				},
-				{
-					type: 'MY_TYPE',
-					payload: Error,
+{
+	type: 'ADD_TODO',
+	payload: actionData,
+	meta: actionMeta
+},
+{
+	type: 'ADD_TODO',
+	payload: new Error(),
+	error: true
+}
+			</p>
+			<p class="hidden-note">
+				Se si vuole c'è anche un pattern per le action, chiamto Flux Standard Action.
+			</p>
+		</section>
+		<section>
+			<p class="hidden-note">
+				Abbiamo parlato di actions, che sono i messaggi.
+				Questi messaggi, come abbiamo già detto vengono generati dagli action creators.
+				In poche parole sono delle funzioni che generano delle action e a volte ne richiedono anche il dispatch.
+			</p>
+			<p class="code">
+const addTodo = (todo) => {
+	dispatch({
+		type: 'ADD_TODO',
+		payload: todo
+	});
+};
+			</p>
+		</section>
+		<section>
+			<p class="hidden-note">
+				Ma l'asincrono?
+			</p>
+			<p class="code">
+const addTodo = (todo) => {
+	saveToDoWebApi(todo)
+			.then((todo) => {
+				dispatch({
+					type: 'ADD_TODO',
+					payload: todo
+				});
+			})
+			.catch(() => {
+				dispatch({
+					type: 'ADD_TODO',
+					payload: new Error('damn'),
 					error: true
-				}
-			</p>
-			<p>
-				A qualcuno però questa troppa libertà non piaceva, così si è inventato un pattern nel pattern, le FSA.
-				Definire un pattern per le action ha dato vita a un ecosistema di funzioni helper utili.
+				});
+			});
+};
 			</p>
 		</section>
 		<section>
+			<p class="hidden-note">
+				Così diventa facile anche fare optimistic updates
+			</p>
+			<p class="code">
+const addTodo = (todo) => {
+	dispatch({
+		type: 'ADD_TODO',
+		payload: todo
+	});
+	saveToDoWebApi(todo)
+			.catch(() => {
+				dispatch({
+					type: 'REMOVE_TODO',
+					payload: todo
+				});
+			});
+};
+			</p>
+		</section>
+		<section>
+			<p class="code">
+const addTodo = (todo) => ({
+	type: 'ADD_TODO',
+	payload: todo
+});
 
+dispatch(addTodo(myPrettyTodo));
+			</p>
 		</section>
 		<section>
-			How to choose a Flux library or Create your own
+			<p class="hidden-note">
+				Beh però qua per gestire l'asincrono dobbiamo introdurre un concetto nuovo.
+				Il middleware.
+				I middleware non sono nient'altro che funzioni che si trovano tra l'action creator e il dispatch vero e
+				proprio.
+			</p>
+			<p class="code">
+const addTodo = (todo) => ({
+	type: 'ADD_TODO',
+	payload: saveToDoWebApi(todo)
+});
+
+resolvePromise(dispatch, addTodo(myPrettyTodo));
+			</p>
 		</section>
 		<section>
 			Flux variants
