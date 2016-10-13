@@ -28,38 +28,40 @@
 				Non c'era una vera e propria organizzazione, ma i componenti erano pochi e gestirli era abbastanza facile.
 			</p>
 			<p class="text-center">
-				<img src="basic-interface.svg" style="width: 50vw; height: 50vh;">
+				<img src="img/basic-interface.svg"class="halfscreen">
 			</p>
 		</section>
 		<section>
 			<p class="hidden-note">Poi però l'applicazione crebbe, i componenti iniziarono a diventare tanti.
 				Iniziarono ad uscire fuori i primi bug, ma correggerli non faceva altro che aumentare la complessità del sistema.</p>
 			<p class="text-center">
-				<img src="medium-interface.svg" style="width: 50vw; height: 50vh;">
+				<img src="img/medium-interface.svg"class="halfscreen">
 			</p>
 		</section>
 		<section>
 			<p class="hidden-note">Le feature aumentarono e con esse anche il caos, quindi si decise di dare un pò di organizzazione.
 				Venne utilizzato il pattern MVC</p>
+			<img src="img/boom.gif" class="responsive fullscreen">
 		</section>
 		<section>
 			<p class="hidden-note">Però il cambiamento non veniva visto di buon occhio. Era difficile dire chi doveva essere il Controller, chi il Model e chi la View</p>
-		</section>
-		<section>
 			<p class="hidden-note">Poi qualche pazzo ci mise dentro anche il two way data binding. Il Controller iniziava a diventare enorme e pieno di responsabilità,
 				e quando una View tentava di parlare con un Model succedeva il finimondo.</p>
+			<h2>MVC is the solution?</h2>
+			<img src="img/mvc.svg"class="halfscreen">
+		</section>
+		<section>
+			<h2>It does not scale!</h2>
+			<img src="img/mvc-facebook.png" class="responsive halfscreen">
 		</section>
 		<section>
 			<p class="hidden-note">Fu così che si decise di dare una svolta, scegliendo un pattern completamente nuovo, Flux</p>
-		</section>
-		<section>
 			<p class="hidden-note">Con Flux ognuno aveva un compito ben delineato, e sapeva bene con chi parlare e chi ascoltare.</p>
-		</section>
-		<section>
 			<p class="hidden-note">La View parla con gli Actions Creators, che, dopo aver fatto un bel discorsetto con le Web API, e creano azioni da mandare al Dispatcher, che a sua volta la propaga a tutti gli store.
 				Gli Store prendono le action e aggiornano lo stato dell'applicazione.
 				Dopo che hanno fatto tutto raccontano le modifiche alla View che fermano il giro e mostrano il nuovo stato al'utente.</p>
-			<img class="responsive" src="http://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png">
+			<h2>Let's try with flux!</h2>
+			<img src="img/flux.png" class="responsive halfscreen">
 		</section>
 		<section>
 			<p class="hidden-note">
@@ -69,6 +71,8 @@
 				per questo oggi voglio provare ad analizzare quelle che possono essere le scelte principali
 				che vanno effettuate quando si sceglie di utilizzare Flux.
 			</p>
+			<h2>Unidirectional data flow</h2>
+			<img src="img/flux-explained.png" class="responsive halfscreen">
 		</section>
 		<section>
 			<p class="hidden-note">
@@ -76,8 +80,29 @@
 				Abbiamo capito che è il messaggio che viene creato su richesta delle View e spedito a tutti gli store,
 				ma come sono fatte?
 			</p>
+			<h2>But what implementation?</h2>
+			<div class="item-set">
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/facebook-flux">Facebook Flux</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/yahoo-fluxible">Fluxible by Yahoo</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/reflux">Reflux</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/alt">Alt</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/flummox">Flummox</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/marty">Marty.js</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/mcfly">McFly</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/lux">Lux</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/material-flux">Material Flux</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/redux">Redux</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/nuclear-js">Nuclear.js</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/fluxette">Fluxette</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/fluxxor">Fluxxor</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/freezer-js">Freezer</a></div>
+				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/fluxury">Fluxury</a></div>
+			</div>
 		</section>
 		<section>
+			<h4>
+				Action example
+			</h4>
 			<p class="code">
 {
 	type: 'ADD_TODO',
@@ -90,6 +115,9 @@
 			</p>
 		</section>
 		<section>
+			<h4>
+				Flux Standard Action
+			</h4>
 			<p class="code">
 {
 	type: 'ADD_TODO',
@@ -112,6 +140,9 @@
 				Questi messaggi, come abbiamo già detto vengono generati dagli action creators.
 				In poche parole sono delle funzioni che generano delle action e a volte ne richiedono anche il dispatch.
 			</p>
+			<h4>
+				Action creator example
+			</h4>
 			<p class="code">
 const addTodo = (todo) => {
 	dispatch({
@@ -191,7 +222,10 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			</p>
 		</section>
 		<section>
-			Flux variants
+			Stores
+		</section>
+		<section>
+			Selectors
 		</section>
 		<section>
 			Code demo (This slides!)
