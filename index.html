@@ -101,7 +101,7 @@
 		</section>
 		<section>
 			<h4>
-				Action example
+				Actions are simple messages
 			</h4>
 			<p class="code">
 {
@@ -141,7 +141,7 @@
 				In poche parole sono delle funzioni che generano delle action e a volte ne richiedono anche il dispatch.
 			</p>
 			<h4>
-				Action creator example
+				Action creators, create and dispatch the messages
 			</h4>
 			<p class="code">
 const addTodo = (todo) => {
@@ -156,6 +156,7 @@ const addTodo = (todo) => {
 			<p class="hidden-note">
 				Ma l'asincrono?
 			</p>
+			<h3>Async actions</h3>
 			<p class="code">
 const addTodo = (todo) => {
 	saveToDoWebApi(todo)
@@ -179,6 +180,7 @@ const addTodo = (todo) => {
 			<p class="hidden-note">
 				Così diventa facile anche fare optimistic updates
 			</p>
+			<h3>Optimistic updates</h3>
 			<p class="code">
 const addTodo = (todo) => {
 	dispatch({
@@ -196,6 +198,7 @@ const addTodo = (todo) => {
 			</p>
 		</section>
 		<section>
+			<h3>Single responsibility</h3>
 			<p class="code">
 const addTodo = (todo) => ({
 	type: 'ADD_TODO',
@@ -212,6 +215,7 @@ dispatch(addTodo(myPrettyTodo));
 				I middleware non sono nient'altro che funzioni che si trovano tra l'action creator e il dispatch vero e
 				proprio.
 			</p>
+			<h3>Middlewares!</h3>
 			<p class="code">
 const addTodo = (todo) => ({
 	type: 'ADD_TODO',
@@ -224,11 +228,29 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 		<section>
 			Stores
 		</section>
-		<section>
-			Selectors
+		<section class="vs-box">
+			<h3>Singleton</h3>
+			<h3>Dependency Injection</h3>
+		</section>
+		<section class="vs-box">
+			<h3>Single Store</h3>
+			<h3>Multiple Stores</h3>
+		</section>
+		<section class="vs-box">
+			<h3>Data driven</h3>
+			<h3>Event driven</h3>
+		</section>
+		<section class="vs-box">
+			<h3>Imperative</h3>
+			<h3>Functional</h3>
+		</section>
+		<section class="vs-box">
+			<h3>Magic oriented</h3>
+			<h3>Declarative</h3>
 		</section>
 		<section>
-			Code demo (This slides!)
+			<h3>Code demo</h3>
+			<h2 class="fragment">This slides!</h2>
 		</section>
 		<div class="progress"></div>
 		<div class="controls">

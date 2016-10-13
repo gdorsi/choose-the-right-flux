@@ -87,3 +87,25 @@ img.halfscreen {
   width: 50vw;
   height: 50vh;
 }
+
+.vs-box {
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: 100vw;
+    border-bottom: 2px solid #000;
+    top: 50vh;
+    left: 0;
+    right: 0;
+  }
+  &:after {
+    content: 'VS';
+    position: absolute;
+    top: calc(50vh - 1vw);
+    left: calc(50vw - 2vh);
+    display: block;
+    background: #ddd;
+    padding: 0 1vh;
+    font-size: calc(1vw + 1vh);
+  }
+}
