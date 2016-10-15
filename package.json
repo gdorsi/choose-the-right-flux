@@ -22,7 +22,9 @@
     "gulp-rollup": "^2.4.0",
     "gulp-sass": "^2.3.2",
     "lodash": "^4.16.0",
-    "rollup": "^0.35.11"
+    "rollup": "^0.35.11",
+    "rollup-stream": "^1.14.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.8.0",

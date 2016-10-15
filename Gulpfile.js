@@ -1,29 +1,39 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var sass = require('gulp-sass');
-var rollup = require('gulp-rollup');
+var rollup = require('rollup-stream');
 var babel = require('rollup-plugin-babel');
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
+var source = require('vinyl-source-stream');
 
 gulp.task('connect', () => {
     connect.server();
 });
 
-gulp.task('js', () => {
-    gulp.src(['./src/js/**/*.js', './node_modules/**/*.js'])
-        .pipe(rollup({
-            entry: './src/js/index.js',
-            dest: 'index.js',
-            plugins: [
-                nodeResolve({ jsnext: true, main: true }),
-                commonjs(),
-                babel({
-                    exclude: 'node_modules/**'
-                }),
-            ]
-        }).on('error', (err) => console.log(err.message)))
-        .pipe(gulp.dest('./dist'));
+var cache;
+gulp.task('js', function() {
+  return rollup({
+    entry: './src/js/index.js',
+    dest: 'index.js',
+    plugins: [
+        nodeResolve({ jsnext: true, main: true }),
+        commonjs(),
+        babel({
+            exclude: 'node_modules/**'
+        }),
+    ],
+      cache: cache
+    })
+
+    .on('bundle', function(bundle) {
+      cache = bundle;
+    })
+
+    // after listening for the 'bundle' event, proceed as usual.
+    //.pipe(source('node_modules/**/*.js'))
+    .pipe(source('index.js'))
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('sass', function () {
