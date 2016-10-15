@@ -1,4 +1,3 @@
-import getSlidesDepthList from '../lib/getSlidesDepthList';
 import {initialize} from '../actions';
 import {slide, fragment} from '../selectors';
 
@@ -52,6 +51,4 @@ export default (slides, {dispatch, subscribe}) => {
 
         state = nextState;
     });
-
-    dispatch(initialize(getSlidesDepthList(slides)));
 }

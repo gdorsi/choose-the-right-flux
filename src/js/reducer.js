@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import assign from 'lodash/fp/assign';
+import set from 'lodash/fp/set';
 
 let initialState = {
     slide: 0,
@@ -49,6 +50,8 @@ export default (action, state = initialState) => {
             return assign(state, moveNext(state));
         case actionTypes.PREV:
             return assign(state, movePrev(state));
+        case actionTypes.SET_SLIDE:
+            return set(['slide'], action.payload, state);
     }
 
     return state;

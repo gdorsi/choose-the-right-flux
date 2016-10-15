@@ -18,3 +18,10 @@ export function prev() {
         type: actionTypes.PREV
     }
 }
+
+export function setSlide(slide) {
+    return {
+        type: actionTypes.SET_SLIDE,
+        payload: slide
+    }
+}
