@@ -4,14 +4,14 @@ function createStore(reducer, middlewares) {
         subscribers: []
     };
 
+    store.subscribe = subscribe(store);
+    store.getState = getState(store);
+
     if(middlewares && middlewares.length) {
         store.dispatch = middlewares.map((middleware, index) => middleware(store)(middlewares[index + 1] || dispatch(store)))[0];
     } else {
         store.dispatch = dispatch(store);
     }
-
-    store.subscribe = subscribe(store);
-    store.getState = getState(store);
 
     store.dispatch({}); //Set the initial state
 
