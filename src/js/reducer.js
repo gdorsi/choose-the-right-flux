@@ -38,20 +38,20 @@ function movePrev(state) {
 }
 
 export default (action, state = initialState) => {
-    let payload = action.payload;
+    let {payload} = action;
 
     switch (action.type) {
         case actionTypes.LOAD_DEPTH_LIST:
             return assign(state, {
-                depthList: payload.depthList,
-                slidesCount: payload.depthList.length
+                depthList: payload,
+                slidesCount: payload.length
             });
         case actionTypes.NEXT:
             return assign(state, moveNext(state));
         case actionTypes.PREV:
             return assign(state, movePrev(state));
         case actionTypes.SET_SLIDE:
-            return set(['slide'], action.payload, state);
+            return set(['slide'], apayload, state);
     }
 
     return state;

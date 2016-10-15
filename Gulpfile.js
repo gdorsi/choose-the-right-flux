@@ -20,8 +20,9 @@ gulp.task('js', function() {
         nodeResolve({ jsnext: true, main: true }),
         commonjs(),
         babel({
-            exclude: 'node_modules/**'
-        }),
+          presets: ['es2015-rollup'],
+          exclude: 'node_modules/**'
+        })
       ],
       cache: cache
     })

@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 export function initialize(depthList) {
     return {
         type: actionTypes.LOAD_DEPTH_LIST,
-        payload: {depthList}
+        payload: depthList
     }
 }
 
