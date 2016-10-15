@@ -13,7 +13,7 @@ export default (slides, {dispatch, getState, subscribe}) => {
   window.onhashchange = () => {
     let nextSlide = getHashAsNumber();
 
-    if (!isNaN(nextSlide)) {
+    if (!isNaN(nextSlide) && nextSlide !== slide) {
       dispatch(setSlide(nextSlide));
     }
   };

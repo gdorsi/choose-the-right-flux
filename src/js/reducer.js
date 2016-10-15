@@ -8,7 +8,8 @@ let initialState = {
 };
 
 function moveNext(state) {
-    let {slide, fragment, depthList, slidesCount} = state;
+    let {slide, fragment, depthList} = state,
+      slidesCount = depthList.length;
 
     if (fragment + 1 < depthList[slide]) {
         return {
@@ -42,16 +43,16 @@ export default (action, state = initialState) => {
 
     switch (action.type) {
         case actionTypes.LOAD_DEPTH_LIST:
-            return assign(state, {
-                depthList: payload,
-                slidesCount: payload.length
-            });
+            return set(['depthList'], payload, state);
         case actionTypes.NEXT:
             return assign(state, moveNext(state));
         case actionTypes.PREV:
             return assign(state, movePrev(state));
         case actionTypes.SET_SLIDE:
-            return set(['slide'], apayload, state);
+            return assign(state, {
+                fragment: -1,
+                slide: payload
+            });
     }
 
     return state;
