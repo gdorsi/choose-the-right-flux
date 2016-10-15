@@ -22,16 +22,12 @@ gulp.task('js', function() {
         babel({
             exclude: 'node_modules/**'
         }),
-    ],
+      ],
       cache: cache
     })
-
     .on('bundle', function(bundle) {
       cache = bundle;
     })
-
-    // after listening for the 'bundle' event, proceed as usual.
-    //.pipe(source('node_modules/**/*.js'))
     .pipe(source('index.js'))
     .pipe(gulp.dest('./dist'));
 });
