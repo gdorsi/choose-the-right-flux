@@ -1,24 +1,32 @@
+import set from 'lodash/fp/set';
+
 function createStore(reducer, middlewares) {
-    var store = {
+    let store = {
         reducer,
-        subscribers: []
+        subscribers: [],
+        state: void(0)
     };
 
-    store.subscribe = subscribe(store);
-    store.getState = getState(store);
+    let publicApi = {
+      subscribe:  makeSubscribe(store),
+      getState: makeGetState(store),
+      dispatch: makeDispatch(store)
+    };
 
     if(middlewares && middlewares.length) {
-        store.dispatch = middlewares.map((middleware, index) => middleware(store)(middlewares[index + 1] || dispatch(store)))[0];
-    } else {
-        store.dispatch = dispatch(store);
+        publicApi = applyMiddlewares(publicApi, middlewares);
     }
 
-    store.dispatch({}); //Set the initial state
+    publicApi.dispatch({}); //Set the initial state
 
-    return store;
+    return publicApi;
 }
 
-function dispatch(store) {
+function applyMiddlewares(store, middlewares) {
+  return set('dispatch', middlewares.map((middleware, index) => middleware(store)(middlewares[index + 1] || store.dispatch))[0], store);
+}
+
+function makeDispatch(store) {
     return (action) => {
         let nextState = store.reducer(action, store.state);
 
@@ -29,13 +37,13 @@ function dispatch(store) {
     }
 }
 
-function subscribe(store) {
+function makeSubscribe(store) {
     return (reduceFn, callback) => {
         store.subscribers.push({reduceFn, callback});
     }
 }
 
-function getState(store) {
+function makeGetState(store) {
     return () => store.state;
 }
 
