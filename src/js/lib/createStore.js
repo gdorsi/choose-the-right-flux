@@ -17,7 +17,7 @@ function createStore(reducer, middlewares) {
         publicApi = applyMiddlewares(publicApi, middlewares);
     }
 
-    publicApi.dispatch({}); //Set the initial state
+    publicApi.dispatch({type: '@@INIT'}); //Set the initial state
 
     return publicApi;
 }

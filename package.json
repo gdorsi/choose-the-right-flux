@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-rollup": "^2.4.0",
@@ -28,6 +29,7 @@
     "lodash": "^4.16.0",
     "mocha": "^3.1.2",
     "redux-logger": "^2.7.0",
+    "redux-thunk": "^2.1.0",
     "rollup": "^0.35.11",
     "rollup-stream": "^1.14.0",
     "vinyl-source-stream": "^1.1.0"

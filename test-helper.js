@@ -2,7 +2,11 @@ require('babel-core/register')({
   presets: ['es2015']
 });
 
-let jsdom = require('jsdom')
+let jsdom = require('jsdom');
+let spies = require('chai-spies');
+let chai = require('chai')
+
+chai.use(spies);
 
 const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
 const win = doc.defaultView;
