@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Create your own flux</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-        <link rel="stylesheet" href="dist/index.css">
+		<title>Choose the right Flux</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="dist/index.css">
 	</head>
 	<body>
 		<section class="active">
@@ -24,11 +24,6 @@
 		</section>
 		<section>
 			<p class="text-center">
-				<img src="img/basic-interface.svg"class="halfscreen">
-			</p>
-		</section>
-		<section>
-			<p class="text-center">
 				<img src="img/medium-interface.svg"class="halfscreen">
 			</p>
 		</section>
@@ -37,10 +32,14 @@
 		</section>
 		<section>
 			<h2>MVC is the solution?</h2>
-			<img src="img/mvc.svg"class="halfscreen">
+			<img src="img/mvc-simple.png"class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>It does not scale!</h2>
+			<h2>Too old!</h2>
+			<img src="img/old.gif" class="responsive halfscreen">
+		</section>
+		<section>
+			<h2>And does not scale!</h2>
 			<img src="img/mvc-facebook.png" class="responsive halfscreen">
 		</section>
 		<section>
@@ -48,11 +47,13 @@
 			<img src="img/flux.png" class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>Why Flux?</h2>
-			<img src="img/flux-explained.png" class="responsive halfscreen">
+			<h2>Predictability</h2>
+			<img src="img/happy.gif" class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>But what implementation?</h2>
+			<h3>Let's search the best implementation</h3>
+		</section>
+		<section>
 			<div class="item-set">
 				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/facebook-flux">Facebook Flux</a></div>
 				<div class="task-list-item"><a href="https://github.com/voronianski/flux-samples/tree/master/yahoo-fluxible">Fluxible by Yahoo</a></div>
@@ -70,6 +71,14 @@
 				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/freezer-js">Freezer</a></div>
 				<div class="task-list-item"><a href="https://github.com/voronianski/flux-comparison/tree/master/fluxury">Fluxury</a></div>
 			</div>
+			<p>and so many others...</p>
+		</section>
+		<section>
+			<img src="img/whaat.gif" class="responsive fullscreen">
+		</section>
+		<section>
+			<h2>Flux</h2>
+			<img src="img/flux-explained.png" class="responsive halfscreen">
 		</section>
 		<section>
 			<h2>Flux</h2>
@@ -77,7 +86,12 @@
 				<li>Singleton</li>
 				<li>Multiple Stores</li>
 				<li>Event driven</li>
+				<li>3 years old...</li>
 			</ul>
+		</section>
+		<section>
+			<h2>Too old!</h2>
+			<img src="img/old.gif" class="responsive halfscreen">
 		</section>
 		<section>
 			<h2>Redux</h2>
@@ -102,7 +116,17 @@
 		</section>
 		<section>
 			<h2>MobX</h2>
-			<img src="img/mobx.png" class="responsive">
+			<img src="img/mobx.png" class="responsive halfscreen">
+		</section>
+		<section>
+			<h2>Data derivation</h2>
+		</section>
+		<section>
+			<img src="img/boring.gif" class="responsive fullscreen">
+		</section>
+		<section>
+			<h3>Code demo</h3>
+			<h2 class="fragment">This slides!</h2>
 		</section>
 		<section>
 			<h4>
@@ -208,26 +232,122 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 		</section>
 		<section>
 			<h2>Stores</h2>
-		</section>
-		<section class="vs-box">
-			<h3>Singleton</h3>
-			<h3>Dependency Injection</h3>
-		</section>
-		<section class="vs-box">
-			<h3>Single Store</h3>
-			<h3>Multiple Stores</h3>
-		</section>
-		<section class="vs-box">
-			<h3>Observable</h3>
-			<h3>Event drivern</h3>
-		</section>
-		<section class="vs-box">
-			<h3>Imperative</h3>
-			<h3>Functional</h3>
+			<p>The source of truth</p>
 		</section>
 		<section>
-			<h3>Code demo</h3>
-			<h2 class="fragment">This slides!</h2>
+			<h2>Stores</h2>
+			<p class="code">
+{
+	"todos": [
+		"banana",
+		"banana",
+		"banana"
+	]
+}
+			</p>
+		</section>
+		<section>
+			<h2>Stores</h2>
+			<p class="code">
+{
+	"todos": [
+		"banana",
+		"banana",
+		"banana"
+	],
+	"todosCount": 3
+}
+			</p>
+		</section>
+		<section>
+			<h2>Stores</h2>
+			<p class="code">
+{
+	"todos": [
+		"banana",
+		"banana"
+	],
+	"todosCount": 3
+}
+			</p>
+		</section>
+		<section>
+			<h2>Data derivation</h2>
+		</section>
+		<section>
+			<h2>Selectors</h2>
+			<p class="code">
+function todosCount(state) {
+	return state.todos.length
+}
+			</p>
+		</section>
+		<section>
+			<h2>Redux: Reselect</h2>
+			<p class="code">
+let todos(state) => state.todos;
+
+//Memoized
+let todosCount = createSelector(todos, (todos) => {
+	return todos.length;
+});
+			</p>
+		</section>
+		<section>
+			<h2>MobX</h2>
+			<h4>
+				Builds a dependency graph
+				by tracking property access
+			</h4>
+		</section>
+		<section>
+			<h3>Automagic?</h3>
+			<img src="img/automagic.gif" class="responsive halfscreen">
+		</section>
+		<section>
+			<p class="code">
+import {observable} from 'mobx';
+
+var todoStore = observable({
+    /* some observable state */
+    todos: [],
+
+    /* a derived value */
+    get completedCount() {
+        return this.todos.filter(todo => todo.completed).length;
+    }
+});
+			</p>
+		</section>
+		<section>
+			<p class="code">
+import {autorun} from 'mobx';
+
+/* a function that observes the state */
+autorun(function() {
+    console.log("Completed %d of %d items",
+        todoStore.completedCount,
+        todoStore.todos.length
+    );
+});
+			</p>
+		</section>
+		<section>
+			<p class="code">
+/* ..and some actions that modify the state */
+todoStore.todos[0] = {
+    title: "banana",
+    completed: false
+};
+// -> synchronously prints 'Completed 0 of 1 items'
+
+todoStore.todos[0].completed = true;
+// -> synchronously prints 'Completed 1 of 1 items'
+			</p>
+		</section>
+		<section>
+			<h3>Yea</h3>
+			<img src="img/automagic.gif" class="responsive halfscreen">
 		</section>
 		<section>
 			<h3>Debugger.html</h3>
@@ -235,6 +355,9 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 		</section>
 		<section>
 			<img src="img/thanks.gif" class="responsive fullscreen">
+		</section>
+		<section>
+			<h2>Thanks!</h2>
 		</section>
 		<div class="progress"></div>
 		<div class="controls">

@@ -8,6 +8,7 @@ export default (element, { dispatch }) => {
                 dispatch(prev());
                 break;
             case 39: //RIGHT
+            case 32: //SPACE
                 evt.preventDefault();
                 dispatch(next());
                 break;

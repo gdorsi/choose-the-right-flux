@@ -63,9 +63,11 @@ section {
   display: flex;
   width: 80vw;
   flex-wrap: wrap;
+  justify-content: center;
 
   .task-list-item {
     margin: 20px;
+    font-size: 1.4em;
 
     > a {
       color: #3f3f3f;
