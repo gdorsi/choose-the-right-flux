@@ -23,32 +23,72 @@
 			</div>
 		</section>
 		<section>
-			<p class="text-center">
-				<img src="img/medium-interface.svg"class="halfscreen">
-			</p>
+			<h3>
+				Once upon a time...
+			</h3>
 		</section>
 		<section>
-			<img src="img/boom.gif" class="responsive fullscreen">
+			<h3>
+				Web applications were static
+			</h3>
 		</section>
 		<section>
-			<h2>MVC is the solution?</h2>
+			<h3>
+				Javascript was usless and hated by anyone
+			</h3>
+		</section>
+		<section>
+			<h3>
+				One day web applications becomes dynamic...
+			</h3>
+		</section>
+		<section>
+			<h4>
+				...but develop in Javascript was still a pain...
+			</h4>
+		</section>
+		<section>
+			<h4>
+				...So the community start to create amazing tools (and polyfills)...
+			</h4>
+		</section>
+		<section>
+			<h4>
+				...and develop web applications starts to become fancy...
+			</h4>
+		</section>
+		<section>
+			<h2>...someone starts to use MVC...</h2>
 			<img src="img/mvc-simple.png"class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>Too old!</h2>
-			<img src="img/old.gif" class="responsive halfscreen">
-		</section>
-		<section>
-			<h2>And does not scale!</h2>
+			<h2>...But it does not scale!</h2>
 			<img src="img/mvc-facebook.png" class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>Let's try with flux!</h2>
+			<h4>
+				A dynamic web app should be able
+				to change over time
+			</h4>
+		</section>
+		<section>
+			<h3>
+				So?
+			</h3>
+			<h4 class="fragment">
+				Should be PREDICTABLE
+			</h4>
+		</section>
+		<section>
+			<h2>So Facebook creates Flux</h2>
 			<img src="img/flux.png" class="responsive halfscreen">
 		</section>
 		<section>
-			<h2>Predictability</h2>
+			<h2>Unidirectional data flow</h2>
 			<img src="img/happy.gif" class="responsive halfscreen">
+		</section>
+		<section>
+			<img src="img/flux-explained.png" class="responsive fullscreen">
 		</section>
 		<section>
 			<h3>Let's search the best implementation</h3>
@@ -74,52 +114,34 @@
 			<p>and so many others...</p>
 		</section>
 		<section>
-			<img src="img/whaat.gif" class="responsive fullscreen">
-		</section>
-		<section>
-			<h2>Flux</h2>
-			<img src="img/flux-explained.png" class="responsive halfscreen">
-		</section>
-		<section>
-			<h2>Flux</h2>
+			<h2>Redux</h2>
+			<p>Based on three Principles</p>
 			<ul>
-				<li>Singleton</li>
-				<li>Multiple Stores</li>
-				<li>Event driven</li>
-				<li>3 years old...</li>
+				<li>Single source of truth</li>
+				<li>State is read-only</li>
+				<li>Changes are made with pure functions</li>
 			</ul>
 		</section>
 		<section>
-			<h2>Too old!</h2>
-			<img src="img/old.gif" class="responsive halfscreen">
+			<h4>Single source of truth</h4>
+			<p>"The state of your whole application is stored in an object tree within a single store"</p>
 		</section>
 		<section>
-			<h2>Redux</h2>
-			<ul>
-				<li>Dependency injection</li>
-				<li>Single Store</li>
-				<li>Observable</li>
-				<li>Based on pure reducers</li>
-			</ul>
+			<h4>State is read-only</h4>
+			<p>"The only way to change the state is to emit an action"</p>
 		</section>
 		<section>
-			<h2>Redux</h2>
-			<img src="img/redux.png" class="responsive">
+			<h4>Changes are made with pure functions</h4>
+			<p>"To specify how the state tree is transformed by actions, you write pure reducers"</p>
 		</section>
 		<section>
 			<h2>MobX</h2>
-			<p>Not properly a Flux implementation, but can be Flux with the right boilerplate</p>
+			<p>Simple, scalable state management<p>
 			<ul>
 				<li>Observable</li>
 				<li>Imperative</li>
+				<li>Data derivation</li>
 			</ul>
-		</section>
-		<section>
-			<h2>MobX</h2>
-			<img src="img/mobx.png" class="responsive halfscreen">
-		</section>
-		<section>
-			<h2>Data derivation</h2>
 		</section>
 		<section>
 			<img src="img/boring.gif" class="responsive fullscreen">
@@ -130,7 +152,7 @@
 		</section>
 		<section>
 			<h4>
-				Actions are simple messages
+				Actions are object that describes what happened
 			</h4>
 			<p class="code">
 {
@@ -235,7 +257,6 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			<p>The source of truth</p>
 		</section>
 		<section>
-			<h2>Stores</h2>
 			<p class="code">
 {
 	"todos": [
@@ -247,7 +268,6 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			</p>
 		</section>
 		<section>
-			<h2>Stores</h2>
 			<p class="code">
 {
 	"todos": [
@@ -260,7 +280,6 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			</p>
 		</section>
 		<section>
-			<h2>Stores</h2>
 			<p class="code">
 {
 	"todos": [
@@ -272,15 +291,7 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			</p>
 		</section>
 		<section>
-			<h2>Data derivation</h2>
-		</section>
-		<section>
-			<h2>Selectors</h2>
-			<p class="code">
-function todosCount(state) {
-	return state.todos.length
-}
-			</p>
+			<h4>Solution: Normalize the stata &amp; derive the data</h4>
 		</section>
 		<section>
 			<h2>Redux: Reselect</h2>

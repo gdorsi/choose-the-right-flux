@@ -19,14 +19,12 @@ section {
 
 .fragment {
   transition: opacity .2s, transform .2s;
-  transform: translate3d(10px, 0, 0);
-  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
 
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
   opacity: 0;
 
   &.visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
 }
 
