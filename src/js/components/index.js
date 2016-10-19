@@ -15,5 +15,5 @@ export default () => {
     keyDispatcher(document, store);
     codeHighlight(document.querySelectorAll('.code'), store);
     hydrate(slides, store);
-    url(slides, store);
+    url(store);
 }

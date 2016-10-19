@@ -139,7 +139,7 @@
 			<p>Simple, scalable state management<p>
 			<ul>
 				<li>Observable</li>
-				<li>Imperative</li>
+				<li>Mutable data structures</li>
 				<li>Data derivation</li>
 			</ul>
 		</section>
@@ -260,9 +260,9 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			<p class="code">
 {
 	"todos": [
-		"banana",
-		"banana",
-		"banana"
+		{"value": "banana", "completed:false"},
+		{"value": "banana", "completed:false"},
+		{"value": "banana", "completed:false"}
 	]
 }
 			</p>
@@ -271,11 +271,11 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			<p class="code">
 {
 	"todos": [
-		"banana",
-		"banana",
-		"banana"
+		{"value": "banana", "completed:true"},
+		{"value": "banana", "completed:false"},
+		{"value": "banana", "completed:false"}
 	],
-	"todosCount": 3
+	"completed": 1
 }
 			</p>
 		</section>
@@ -283,10 +283,10 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 			<p class="code">
 {
 	"todos": [
-		"banana",
-		"banana"
+		{"value": "banana", "completed:false"},
+		{"value": "banana", "completed:false"}
 	],
-	"todosCount": 3
+	"completed": 1
 }
 			</p>
 		</section>
@@ -299,8 +299,8 @@ resolvePromise(dispatch, addTodo(myPrettyTodo));
 let todos(state) => state.todos;
 
 //Memoized
-let todosCount = createSelector(todos, (todos) => {
-	return todos.length;
+let completed = createSelector(todos, (todos) => {
+	return todos.filter((todo) => todo.completed).length;
 });
 			</p>
 		</section>

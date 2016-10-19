@@ -7,7 +7,7 @@ function reduceState(state) {
   return slide(state);
 }
 
-export default (slides, {dispatch, getState, subscribe}) => {
+export default ({dispatch, getState, subscribe}) => {
   let slide = reduceState(getState());
 
   window.onhashchange = () => {
