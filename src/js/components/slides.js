@@ -1,7 +1,7 @@
 import {initialize} from '../actions';
 import {slide, fragment} from '../selectors';
 
-function reduceState(state) {
+function mapState(state) {
     return {
         fragment: fragment(state),
         slide: slide(state)
@@ -36,7 +36,7 @@ function hideFragment(slide, fragment) {
 export default (slides, {dispatch, subscribe}) => {
     let state = {};
 
-    subscribe(reduceState, (nextState) => {
+    subscribe(mapState, (nextState) => {
         if (state.slide !== nextState.slide) {
             showSlide(slides[nextState.slide], slides[state.slide]);
         }

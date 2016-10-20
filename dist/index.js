@@ -8608,7 +8608,16 @@ function baseSet$1(object, path, value, customizer) {
 
 var _baseSet = baseSet$1;
 
-var baseSet = _baseSet;
+
+
+var _baseSet$2 = Object.freeze({
+	default: _baseSet,
+	__moduleExports: _baseSet
+});
+
+var require$$0$61 = ( _baseSet$2 && _baseSet$2['default'] ) || _baseSet$2;
+
+var baseSet = require$$0$61;
 
 /**
  * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
@@ -8644,10 +8653,19 @@ function set$2(object, path, value) {
 
 var set_1 = set$2;
 
+
+
+var set$3 = Object.freeze({
+	default: set_1,
+	__moduleExports: set_1
+});
+
 var require$$2$36 = ( convert$2 && convert$2['default'] ) || convert$2;
 
+var require$$1$44 = ( set$3 && set$3['default'] ) || set$3;
+
 var convert = require$$2$36;
-var func$1 = convert('set', set_1);
+var func$1 = convert('set', require$$1$44);
 
 func$1.placeholder = require$$0$1;
 var set = func$1;
@@ -8966,6 +8984,21 @@ var formatTime = exports.formatTime = function formatTime(time) {
 
 // Use performance API if it's available in order to get better precision
 var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
+});
+
+var helpers$1 = unwrapExports(helpers);
+var timer = helpers.timer;
+var formatTime = helpers.formatTime;
+var pad = helpers.pad;
+var repeat = helpers.repeat;
+
+var helpers$2 = Object.freeze({
+	default: helpers$1,
+	__moduleExports: helpers,
+	timer: timer,
+	formatTime: formatTime,
+	pad: pad,
+	repeat: repeat
 });
 
 var index$1 = createCommonjsModule(function (module, exports) {
@@ -9393,6 +9426,15 @@ var index$1 = createCommonjsModule(function (module, exports) {
 }));
 });
 
+
+
+var index$3 = Object.freeze({
+	default: index$1,
+	__moduleExports: index$1
+});
+
+var require$$0$63 = ( index$3 && index$3['default'] ) || index$3;
+
 var diff = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -9401,7 +9443,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = diffLogger;
 
-var _deepDiff = index$1;
+var _deepDiff = require$$0$63;
 
 var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -9487,6 +9529,18 @@ function diffLogger(prevState, newState, logger, isCollapsed) {
 module.exports = exports['default'];
 });
 
+var diff$1 = unwrapExports(diff);
+
+
+var diff$2 = Object.freeze({
+	default: diff$1,
+	__moduleExports: diff
+});
+
+var require$$1$46 = ( helpers$2 && helpers$2['default'] ) || helpers$2;
+
+var require$$0$64 = ( diff$2 && diff$2['default'] ) || diff$2;
+
 var core = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -9495,9 +9549,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.printBuffer = printBuffer;
 
-var _helpers = helpers;
+var _helpers = require$$1$46;
 
-var _diff = diff;
+var _diff = require$$0$64;
 
 var _diff2 = _interopRequireDefault(_diff);
 
@@ -9545,7 +9599,7 @@ function printBuffer(buffer, options) {
   var collapsed = options.collapsed;
   var colors = options.colors;
   var level = options.level;
-  var diff$$1 = options.diff;
+  var diff = options.diff;
 
   buffer.forEach(function (logEntry, key) {
     var started = logEntry.started;
@@ -9605,7 +9659,7 @@ function printBuffer(buffer, options) {
       if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
     }
 
-    if (diff$$1) {
+    if (diff) {
       (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
     }
 
@@ -9616,6 +9670,15 @@ function printBuffer(buffer, options) {
     }
   });
 }
+});
+
+var core$1 = unwrapExports(core);
+var printBuffer = core.printBuffer;
+
+var core$2 = Object.freeze({
+	default: core$1,
+	__moduleExports: core,
+	printBuffer: printBuffer
 });
 
 var defaults = createCommonjsModule(function (module, exports) {
@@ -9667,6 +9730,18 @@ exports.default = {
 module.exports = exports['default'];
 });
 
+var defaults$1 = unwrapExports(defaults);
+
+
+var defaults$2 = Object.freeze({
+	default: defaults$1,
+	__moduleExports: defaults
+});
+
+var require$$2$37 = ( core$2 && core$2['default'] ) || core$2;
+
+var require$$0$65 = ( defaults$2 && defaults$2['default'] ) || defaults$2;
+
 var index = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -9676,11 +9751,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _core = core;
+var _core = require$$2$37;
 
-var _helpers = helpers;
+var _helpers = require$$1$46;
 
-var _defaults = defaults;
+var _defaults = require$$0$65;
 
 var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -9837,7 +9912,7 @@ var hasPrev = function hasPrev(state) {
   return slide(state) > 0 || fragment(state) >= 0;
 };
 
-function reduceState(state) {
+function mapState(state) {
     return {
         fragment: fragment(state),
         slide: slide(state)
@@ -9875,7 +9950,7 @@ var slidesComponent = (function (slides, _ref) {
 
     var state = {};
 
-    subscribe(reduceState, function (nextState) {
+    subscribe(mapState, function (nextState) {
         if (state.slide !== nextState.slide) {
             showSlide(slides[nextState.slide], slides[state.slide]);
         }
@@ -9926,7 +10001,7 @@ var progress = (function (element, _ref) {
     });
 });
 
-function reduceState$1(state) {
+function mapState$1(state) {
     return {
         hasPrev: hasPrev(state),
         hasNext: hasNext(state)
@@ -9939,7 +10014,7 @@ var controls = (function (element, _ref) {
 
     var state = {};
 
-    subscribe(reduceState$1, function (nextState) {
+    subscribe(mapState$1, function (nextState) {
         if (state.hasPrev !== nextState.hasPrev) {
             if (nextState.hasPrev) {
                 element.querySelector('.prev').classList.remove('disabled');
@@ -10027,14 +10102,14 @@ var get$3 = function get$3(object, property, receiver) {
 
 
 
-var set$3 = function set$3(object, property, value, receiver) {
+var set$4 = function set$4(object, property, value, receiver) {
   var desc = Object.getOwnPropertyDescriptor(object, property);
 
   if (desc === undefined) {
     var parent = Object.getPrototypeOf(object);
 
     if (parent !== null) {
-      set$3(parent, property, value, receiver);
+      set$4(parent, property, value, receiver);
     }
   } else if ("value" in desc && desc.writable) {
     desc.value = value;
@@ -11295,7 +11370,16 @@ function createFlow$1(fromRight) {
 
 var _createFlow = createFlow$1;
 
-var createFlow = _createFlow;
+
+
+var _createFlow$2 = Object.freeze({
+	default: _createFlow,
+	__moduleExports: _createFlow
+});
+
+var require$$0$68 = ( _createFlow$2 && _createFlow$2['default'] ) || _createFlow$2;
+
+var createFlow = require$$0$68;
 
 /**
  * This method is like `_.flow` except that it creates a function that
@@ -11318,17 +11402,35 @@ var createFlow = _createFlow;
  * addSquare(1, 2);
  * // => 9
  */
-var flowRight$2 = createFlow(true);
+var flowRight$3 = createFlow(true);
 
-var flowRight_1 = flowRight$2;
+var flowRight_1 = flowRight$3;
+
+
+
+var flowRight$4 = Object.freeze({
+	default: flowRight_1,
+	__moduleExports: flowRight_1
+});
+
+var require$$1$52 = ( flowRight$4 && flowRight$4['default'] ) || flowRight$4;
 
 var convert$5 = require$$2$36;
-var func$4 = convert$5('flowRight', flowRight_1);
+var func$4 = convert$5('flowRight', require$$1$52);
 
 func$4.placeholder = require$$0$1;
 var flowRight = func$4;
 
-var compose = flowRight;
+
+
+var flowRight$2 = Object.freeze({
+	default: flowRight,
+	__moduleExports: flowRight
+});
+
+var require$$0$69 = ( flowRight$2 && flowRight$2['default'] ) || flowRight$2;
+
+var compose = require$$0$69;
 
 var getHashAsNumber = compose(parseInt, getHashValue);
 
@@ -11344,7 +11446,7 @@ var hydrate = (function (slides, _ref) {
     }
 });
 
-function reduceState$2(state) {
+function mapState$2(state) {
   return slide(state);
 }
 
@@ -11353,7 +11455,7 @@ var url = (function (_ref) {
   var getState = _ref.getState;
   var subscribe = _ref.subscribe;
 
-  var slide$$1 = reduceState$2(getState());
+  var slide$$1 = mapState$2(getState());
 
   window.onhashchange = function () {
     var nextSlide = getHashAsNumber();
@@ -11363,7 +11465,7 @@ var url = (function (_ref) {
     }
   };
 
-  subscribe(reduceState$2, function (nextSlide) {
+  subscribe(mapState$2, function (nextSlide) {
     if (slide$$1 !== nextSlide) {
       window.location.hash = nextSlide;
     }
