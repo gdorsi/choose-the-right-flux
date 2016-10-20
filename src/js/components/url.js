@@ -3,12 +3,12 @@ import {slide} from '../selectors';
 import {setSlide} from '../actions';
 import getHashAsNumber from '../lib/getHashAsNumber';
 
-function reduceState(state) {
+function mapState(state) {
   return slide(state);
 }
 
 export default ({dispatch, getState, subscribe}) => {
-  let slide = reduceState(getState());
+  let slide = mapState(getState());
 
   window.onhashchange = () => {
     let nextSlide = getHashAsNumber();
@@ -18,7 +18,7 @@ export default ({dispatch, getState, subscribe}) => {
     }
   };
 
-  subscribe(reduceState, (nextSlide) => {
+  subscribe(mapState, (nextSlide) => {
     if (slide !== nextSlide) {
       window.location.hash = nextSlide;
     }

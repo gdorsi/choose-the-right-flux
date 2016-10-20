@@ -1,7 +1,7 @@
 import {hasPrev, hasNext} from '../selectors';
 import {prev, next} from '../actions';
 
-function reduceState(state) {
+function mapState(state) {
     return {
         hasPrev: hasPrev(state),
         hasNext: hasNext(state)
@@ -11,7 +11,7 @@ function reduceState(state) {
 export default (element, {subscribe, dispatch}) => {
     let state = {};
 
-    subscribe(reduceState, (nextState) => {
+    subscribe(mapState, (nextState) => {
         if (state.hasPrev !== nextState.hasPrev) {
             if (nextState.hasPrev) {
                 element.querySelector('.prev').classList.remove('disabled');
