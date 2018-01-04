@@ -23,7 +23,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-connect": "^5.0.0",
     "gulp-rollup": "^2.4.0",
     "gulp-sass": "^2.3.2",
@@ -35,7 +35,7 @@
     "rollup": "^0.35.11",
     "rollup-stream": "^1.14.0",
     "vinyl-source-stream": "^1.1.0",
-    "snyk": "^1.41.1"
+    "snyk": "^1.65.0"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.8.0",
